@@ -1,48 +1,51 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
+import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
+import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
-
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
-
-const card = (
-  <React.Fragment>
-    <CardContent>
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        Word of the Day
-      </Typography>
-      <Typography variant="h5" component="div">
-        be{bull}nev{bull}o{bull}lent
-      </Typography>
-      <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        adjective
-      </Typography>
-      <Typography variant="body2">
-        well meaning and kindly.
-        <br />
-        {'"a benevolent smile"'}
-      </Typography>
-    </CardContent>
-    <CardActions>
-      <Button size="small">Learn More</Button>
-    </CardActions>
-  </React.Fragment>
-);
+// import IconButton from '@mui/material/IconButton';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Button } from '@mui/material';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 export default function ProductsCard() {
   return (
-    <Box sx={{ minWidth: 275 }}>
-      <Card variant="outlined">{card}</Card>
-    </Box>
+    <Card sx={{ maxWidth: 256 }}>
+      <CardMedia
+        component="img"
+        height="256"
+        image="https://res.cloudinary.com/elgs/image/upload/v1655223336/pokemon-inc-mern/nyqkqzvzjlk0zgvbwi8z.png"
+        alt="Mew"
+      />
+      <CardContent>
+        <Typography variant="h5">
+          Mew
+        </Typography>
+        <Typography variant="h6" color="text.secondary">
+          Psiquico
+        </Typography>
+        <Typography variant="p">
+          {
+            Array(5).fill().map((_, i) => (
+              <span>⭐</span>
+            ))
+          }
+        </Typography>
+        <Typography variant="h5">
+          S/ 100 C/U
+        </Typography>
+        <Typography variant="h6" color="text.secondary">
+          Antes: S/ 200 C/U
+        </Typography>
+      </CardContent>
+      <CardActions>
+        {/* <IconButton aria-label="add to favorites">
+          <FavoriteIcon />
+        </IconButton> */}
+        <Button variant="outlined" endIcon={<AddShoppingCartIcon />}>
+          Agregar al carrito
+        </Button>
+      </CardActions>
+    </Card>
   );
 }
